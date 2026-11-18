@@ -39,10 +39,11 @@ function go(c){map.setView(CITIES[c].slice(0,2),CITIES[c][2]);
 for(const c in CITIES){const b=document.createElement('button');b.textContent=c;b.onclick=()=>go(c);bar.append(b)}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const q=new URLSearchParams(location.search);
-let hlsInst=null,imgTimer=null;
+let hlsInst=null,imgTimer=null,hlsWd=null;
 function closeViewer(){document.getElementById('vw').classList.remove('open');
  if(hlsInst){hlsInst.destroy();hlsInst=null}
  if(imgTimer){clearInterval(imgTimer);imgTimer=null}
+ if(hlsWd){clearTimeout(hlsWd);hlsWd=null}
  document.getElementById('vwbody').innerHTML='';}
 document.getElementById('vwclose').onclick=closeViewer;
 document.getElementById('vw').addEventListener('click',e=>{if(e.target.id==='vw')closeViewer()});
@@ -59,7 +60,7 @@ function openViewer(c){
  const s=c.stream;
  if(!s){fail('This camera has no embeddable feed.');return}
  if(s.kind==='image'){
-  const img=document.createElement('img');img.className='feed';img.alt=c.name;
+  const img=document.createElement('img');img.className='feed';img.alt=c.name;img.referrerPolicy='no-referrer';
   const load=()=>{img.src=s.url+(s.url.indexOf('?')>=0?'&':'?')+'t='+Date.now()};
   load();imgTimer=setInterval(load,(s.refresh||60)*1000);
   img.onerror=()=>fail('The image feed did not load.');
@@ -67,12 +68,18 @@ function openViewer(c){
  if(s.kind==='hls'){
   const v=document.createElement('video');v.controls=true;v.muted=true;v.autoplay=true;v.playsInline=true;
   body.append(v);
-  const onerr=()=>fail('The live stream did not load here (the operator may block outside players).');
+  let recovered=0,shown=false;
+  const showErr=()=>{if(!shown){shown=true;fail('The live stream did not load here (the operator may block outside players).')}};
+  hlsWd=setTimeout(()=>{if(v.currentTime===0&&v.readyState<2)showErr()},18000);
+  v.addEventListener('playing',()=>{if(hlsWd){clearTimeout(hlsWd);hlsWd=null}});
   if(window.Hls&&Hls.isSupported()){
    hlsInst=new Hls({liveSyncDurationCount:3});
-   hlsInst.on(Hls.Events.ERROR,(e,d)=>{if(d&&d.fatal)onerr()});
+   hlsInst.on(Hls.Events.ERROR,(e,d)=>{if(!d||!d.fatal)return;
+    if(d.type===Hls.ErrorTypes.NETWORK_ERROR&&recovered<3){recovered++;hlsInst.startLoad();return}
+    if(d.type===Hls.ErrorTypes.MEDIA_ERROR&&recovered<3){recovered++;hlsInst.recoverMediaError();return}
+    showErr()});
    hlsInst.loadSource(s.url);hlsInst.attachMedia(v);
-  }else if(v.canPlayType('application/vnd.apple.mpegurl')){v.src=s.url;v.addEventListener('error',onerr);}
+  }else if(v.canPlayType('application/vnd.apple.mpegurl')){v.src=s.url;v.addEventListener('error',showErr);}
   else{fail('This browser cannot play the live stream.');return}
   v.play().catch(()=>{});
   return}
