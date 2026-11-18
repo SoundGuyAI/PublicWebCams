@@ -5,23 +5,30 @@
 #bar{position:absolute;z-index:1000;top:10px;left:50px;display:flex;gap:6px}
 #bar button{background:#16202b;color:#dfe8f0;border:1px solid #2b3b4c;border-radius:6px;padding:6px 10px;cursor:pointer}
 #map{height:100%}.leaflet-popup-content img{width:240px;display:block;margin:6px 0}
-#ld{position:absolute;z-index:1000;bottom:24px;left:10px;max-width:420px;background:#16202bee;border:1px solid #2b3b4c;border-radius:6px;padding:6px 10px;font-size:12px}#ld ul{padding-left:16px;margin:4px 0}#ld a{color:#7fd4ff}.st{color:#888;font-size:12px}</style></head><body>
-<div id="bar"></div><details id="ld"><summary>Leads</summary><div id="leads"></div></details><div id="map"></div>
+#ld{position:absolute;z-index:1000;bottom:24px;left:10px;max-width:420px;background:#16202bee;border:1px solid #2b3b4c;border-radius:6px;padding:6px 10px;font-size:12px}#ld ul{padding-left:16px;margin:4px 0}#ld a{color:#7fd4ff}#note{display:none;position:absolute;z-index:1000;top:56px;left:50px;right:10px;max-width:420px;background:#16202bee;color:#dfe8f0;border:1px solid #2b3b4c;border-radius:6px;padding:8px 10px}.st{color:#888;font-size:12px}</style></head><body>
+<div id="bar"></div><div id="note"></div><details id="ld"><summary>Leads</summary><div id="leads"></div></details><div id="map"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const CITIES={"Tel Aviv":[32.07,34.77,12],"Ramat Hasharon":[32.146,34.84,13],"Brussels":[50.85,4.352,13]};
 const map=L.map('map').setView([32.07,34.77],11);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
 const bar=document.getElementById('bar');
-for(const c in CITIES){const b=document.createElement('button');b.textContent=c;b.onclick=()=>map.setView(CITIES[c].slice(0,2),CITIES[c][2]);bar.append(b)}
+let CAMS=[];
+const note=document.getElementById('note');
+function go(c){map.setView(CITIES[c].slice(0,2),CITIES[c][2]);
+ const n=CAMS.filter(x=>x.city===c).length;
+ note.style.display=(CAMS.length&&!n)?'block':'none';
+ note.textContent='No verified public camera found in '+c+' yet. See Leads (bottom left) for what was checked.';}
+for(const c in CITIES){const b=document.createElement('button');b.textContent=c;b.onclick=()=>go(c);bar.append(b)}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const q=new URLSearchParams(location.search);
-fetch('cameras.json').then(r=>r.json()).then(cams=>cams.forEach(c=>{
+fetch('cameras.json').then(r=>r.json()).then(cams=>{CAMS=cams;cams.forEach(c=>{
  const emb=c.embed?`<iframe src="${esc(c.page)}" width="300" height="170" allowfullscreen loading="lazy" referrerpolicy="no-referrer" style="border:0;margin:6px 0;display:block"></iframe>`:'';
  const m=L.circleMarker([c.lat,c.lon],{radius:8,color:'#0a7ea4',fillOpacity:.7}).addTo(map).bindPopup(
  `<b>${esc(c.name)}</b><br>${esc(c.city)} &middot; ${esc(c.type)}${emb}<br><a href="${esc(c.page)}" target="_blank" rel="noopener noreferrer">Open camera page</a><br><span class="st">${esc(c.operator)}<br>${esc(c.status)}</span>`,{minWidth:300});
- if(q.get('open')===c.id)m.openPopup();}));
-if(CITIES[q.get('city')])map.setView(CITIES[q.get('city')].slice(0,2),CITIES[q.get('city')][2]);
+ if(q.get('open')===c.id)m.openPopup();});
+if(CITIES[q.get('city')])go(q.get('city'));});
+if(q.get('leads'))document.getElementById('ld').open=true;
 fetch('leads.json').then(r=>r.json()).then(ls=>{const d=document.getElementById('leads');
  d.innerHTML='<b>Research leads (not on the map, no live claim)</b><ul>'+ls.map(l=>`<li><b>${esc(l.city)}:</b> ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.name)}</a>`:esc(l.name)}. ${esc(l.note)}</li>`).join('')+'</ul>';});
 </script></body></html>
