@@ -1,0 +1,102 @@
+[
+ {
+  "id": "tlv-hilton",
+  "city": "Tel Aviv",
+  "name": "Hilton Beach (Yamit Marina)",
+  "lat": 32.0912,
+  "lon": 34.771,
+  "type": "Live video on operator page",
+  "operator": "BeachCam Israel (beachcam.co.il), found via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv/hilton-beach-yamit-marina-332854",
+  "status": "Checked 18 Nov 2026 about 20:57 Israel time: no in-page feed. The streaming provider (ipCamLive) allows its player only on the operator's own sites, and that block holds inside an embedded copy of the operator page too, so this camera opens on the listing page below."
+ },
+ {
+  "id": "tlv-aviv",
+  "city": "Tel Aviv",
+  "name": "Aviv Beach (Dolfinarium)",
+  "lat": 32.072,
+  "lon": 34.763,
+  "type": "Live video on operator page",
+  "operator": "BeachCam Israel (beachcam.co.il), found via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv/aviv-beach-dolfinarium-332855",
+  "status": "Checked 18 Nov 2026 about 20:57 Israel time: no in-page feed. The streaming provider (ipCamLive) allows its player only on the operator's own sites, and that block holds inside an embedded copy of the operator page too, so this camera opens on the listing page below."
+ },
+ {
+  "id": "tlv-jaffa",
+  "city": "Tel Aviv",
+  "name": "Jaffa Beach",
+  "lat": 32.053,
+  "lon": 34.751,
+  "type": "Live video on operator page",
+  "operator": "BeachCam Israel (beachcam.co.il), found via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv/jaffa-beach-332856",
+  "status": "Checked 18 Nov 2026 about 20:57 Israel time: no in-page feed. The streaming provider (ipCamLive) allows its player only on the operator's own sites, and that block holds inside an embedded copy of the operator page too, so this camera opens on the listing page below."
+ },
+ {
+  "id": "tlv-banana",
+  "city": "Tel Aviv",
+  "name": "Banana Beach",
+  "lat": 32.069,
+  "lon": 34.7633,
+  "type": "Image feed",
+  "operator": "Windy webcam 1639421838 (BeachCam watermark), via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv-district/tel-aviv-yafo/banana-beach-tel-aviv-300664",
+  "status": "Checked 18 Nov 2026 about 20:50 Israel time: no in-page feed. Windy blocks framing its webcam pages and blocks image hotlinking from other sites, so this camera only opens on the listing page below."
+ },
+ {
+  "id": "tlv-jaffaport",
+  "city": "Tel Aviv",
+  "name": "Old Jaffa / Jaffa Port",
+  "lat": 32.0554,
+  "lon": 34.7549,
+  "type": "Image feed",
+  "operator": "Windy webcam 1793900793 (BeachCam watermark), via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv-district/tel-aviv-yafo/tel-aviv-yafo-west-old-jaffa-jaffa-port-314544",
+  "status": "Checked 18 Nov 2026 about 20:50 Israel time: no in-page feed. Windy blocks framing its webcam pages and blocks image hotlinking from other sites, so this camera only opens on the listing page below."
+ },
+ {
+  "id": "tlv-gordon",
+  "city": "Tel Aviv",
+  "name": "Gordon Beach 4K",
+  "lat": 32.0827,
+  "lon": 34.7687,
+  "type": "Live video (operator player in place)",
+  "operator": "GoSurf Israel (gosurf.co.il), official public camera page",
+  "page": "https://gosurf.co.il/cameras/tel-aviv-gordon",
+  "stream": {
+   "kind": "frame",
+   "url": "https://gosurf.co.il/camera/26"
+  },
+  "status": "Added 18 Nov 2026 after wider research. The viewer shows GoSurf's own camera player page in place (verified playing live about 20:56 Israel time); GoSurf places no frame restriction on it. The raw stream is not reused directly, and their camera page is linked below."
+ },
+ {
+  "id": "bru-grandplace",
+  "city": "Brussels",
+  "name": "Grand-Place webcam",
+  "lat": 50.8462335,
+  "lon": 4.3530326,
+  "type": "Live video (HLS)",
+  "operator": "Ville de Bruxelles (open data, CC0)",
+  "page": "https://www.brussels.be/webcam-grand-place",
+  "stream": {
+   "kind": "hls",
+   "url": "https://livecam.brucity.be/LiveBrusselsWebcams/streams/vTm9wYDlwkAEO8mH1746783018793.m3u8"
+  },
+  "status": "Checked live 18 Nov 2026 about 20:41 Israel time: the official City stream (CC0) refuses cross-site requests in desktop browsers, so the viewer may not play it there; Safari on iPhone can still try natively. The Open camera page fallback below always works. Official open-data listing confirms only two City webcams."
+ },
+ {
+  "id": "bru-brouckere",
+  "city": "Brussels",
+  "name": "Place de Brouckere webcam",
+  "lat": 50.8521115,
+  "lon": 4.3533617,
+  "type": "Live video (HLS)",
+  "operator": "Ville de Bruxelles (open data, CC0)",
+  "page": "https://www.brussels.be/webcam-place-de-brouckere",
+  "stream": {
+   "kind": "hls",
+   "url": "https://livecam.brucity.be/LiveBrusselsWebcams/streams/fDdnnEmqOn6Kyy3E1701416388577.m3u8"
+  },
+  "status": "Checked live 18 Nov 2026 about 20:41 Israel time: the official City stream (CC0) refuses cross-site requests in desktop browsers, so the viewer may not play it there; Safari on iPhone can still try natively. The Open camera page fallback below always works. Official open-data listing confirms only two City webcams."
+ }
+]
