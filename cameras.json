@@ -8,7 +8,10 @@
   "type": "Live video (HLS)",
   "operator": "BeachCam Israel (beachcam.co.il), via OpenCCTV listing",
   "page": "https://opencctv.org/cameras/israel/tel-aviv/hilton-beach-yamit-marina-332854",
-  "stream": {"kind": "hls", "url": "https://s27.ipcamlive.com/streams/1bxjmdntsbzoqzkwe/stream.m3u8"},
+  "stream": {
+   "kind": "hls",
+   "url": "https://s27.ipcamlive.com/streams/1bxjmdntsbzoqzkwe/stream.m3u8"
+  },
   "status": "Checked 18 Nov 2026 about 20:35 Israel time: live playlist answers with open CORS, so it plays in the page viewer. Operator page linked for fallback."
  },
  {
@@ -20,7 +23,10 @@
   "type": "Live video (HLS)",
   "operator": "BeachCam Israel (beachcam.co.il), via OpenCCTV listing",
   "page": "https://opencctv.org/cameras/israel/tel-aviv/aviv-beach-dolfinarium-332855",
-  "stream": {"kind": "hls", "url": "https://s31.ipcamlive.com/streams/1fes5p6gbxlhrad7t/stream.m3u8"},
+  "stream": {
+   "kind": "hls",
+   "url": "https://s31.ipcamlive.com/streams/1fes5p6gbxlhrad7t/stream.m3u8"
+  },
   "status": "Checked 18 Nov 2026 about 20:35 Israel time: live playlist answers with open CORS, so it plays in the page viewer. Operator page linked for fallback."
  },
  {
@@ -32,7 +38,10 @@
   "type": "Live video (HLS)",
   "operator": "BeachCam Israel (beachcam.co.il), via OpenCCTV listing",
   "page": "https://opencctv.org/cameras/israel/tel-aviv/jaffa-beach-332856",
-  "stream": {"kind": "hls", "url": "https://s5.ipcamlive.com/streams/05r2jd5qnplgkf4hh/stream.m3u8"},
+  "stream": {
+   "kind": "hls",
+   "url": "https://s5.ipcamlive.com/streams/05r2jd5qnplgkf4hh/stream.m3u8"
+  },
   "status": "Checked 18 Nov 2026 about 20:35 Israel time: live playlist answers with open CORS, so it plays in the page viewer. Operator page linked for fallback."
  },
  {
@@ -44,7 +53,11 @@
   "type": "Image feed (refreshes every 60 s)",
   "operator": "Windy webcam 1639421838 (BeachCam watermark), via OpenCCTV listing",
   "page": "https://opencctv.org/cameras/israel/tel-aviv-district/tel-aviv-yafo/banana-beach-tel-aviv-300664",
-  "stream": {"kind": "image", "url": "https://imgproxy.windy.com/_/full/plain/current/1639421838/original.jpg", "refresh": 60},
+  "stream": {
+   "kind": "image",
+   "url": "https://imgproxy.windy.com/_/full/plain/current/1639421838/original.jpg",
+   "refresh": 60
+  },
   "status": "Checked 18 Nov 2026 about 20:35 Israel time: current frame answers as a JPEG and shows in the page viewer, refreshing every 60 s. Operator page linked for fallback."
  },
  {
@@ -56,7 +69,11 @@
   "type": "Image feed (refreshes every 60 s)",
   "operator": "Windy webcam 1793900793 (BeachCam watermark), via OpenCCTV listing",
   "page": "https://opencctv.org/cameras/israel/tel-aviv-district/tel-aviv-yafo/tel-aviv-yafo-west-old-jaffa-jaffa-port-314544",
-  "stream": {"kind": "image", "url": "https://imgproxy.windy.com/_/full/plain/current/1793900793/original.jpg", "refresh": 60},
+  "stream": {
+   "kind": "image",
+   "url": "https://imgproxy.windy.com/_/full/plain/current/1793900793/original.jpg",
+   "refresh": 60
+  },
   "status": "Checked 18 Nov 2026 about 20:35 Israel time: current frame answers as a JPEG and shows in the page viewer, refreshing every 60 s. Operator page linked for fallback."
  },
  {
@@ -68,7 +85,10 @@
   "type": "Live video (HLS, 4K)",
   "operator": "GoSurf Israel (gosurf.co.il), official public camera page",
   "page": "https://gosurf.co.il/cameras/tel-aviv-gordon",
-  "stream": {"kind": "hls", "url": "https://live.gosurf.co.il/tlv-gordon/live.m3u8"},
+  "stream": {
+   "kind": "hls",
+   "url": "https://live.gosurf.co.il/tlv-gordon/live.m3u8"
+  },
   "status": "Added 18 Nov 2026 about 20:40 Israel time after wider research: GoSurf runs an open 4K live stream for Gordon Beach; playlist answers with open CORS, so it plays in the page viewer. Operator page linked for fallback."
  },
  {
@@ -80,8 +100,11 @@
   "type": "Live video (HLS)",
   "operator": "Ville de Bruxelles (open data, CC0)",
   "page": "https://www.brussels.be/webcam-grand-place",
-  "stream": {"kind": "hls", "url": "https://livecam.brucity.be/LiveBrusselsWebcams/streams/vTm9wYDlwkAEO8mH1746783018793.m3u8"},
-  "status": "Checked 18 Nov 2026 about 20:40 Israel time: this is the same official stream the City page plays (CC0 dataset). It refused automated checks, so if it does not load here, the Open camera page fallback below works. Official open-data listing confirms only two City webcams."
+  "stream": {
+   "kind": "hls",
+   "url": "https://livecam.brucity.be/LiveBrusselsWebcams/streams/vTm9wYDlwkAEO8mH1746783018793.m3u8"
+  },
+  "status": "Checked live 18 Nov 2026 about 20:41 Israel time: the official City stream (CC0) refuses cross-site requests in desktop browsers, so the viewer may not play it there; Safari on iPhone can still try natively. The Open camera page fallback below always works. Official open-data listing confirms only two City webcams."
  },
  {
   "id": "bru-brouckere",
@@ -92,7 +115,10 @@
   "type": "Live video (HLS)",
   "operator": "Ville de Bruxelles (open data, CC0)",
   "page": "https://www.brussels.be/webcam-place-de-brouckere",
-  "stream": {"kind": "hls", "url": "https://livecam.brucity.be/LiveBrusselsWebcams/streams/fDdnnEmqOn6Kyy3E1701416388577.m3u8"},
-  "status": "Checked 18 Nov 2026 about 20:40 Israel time: this is the same official stream the City page plays (CC0 dataset). It refused automated checks, so if it does not load here, the Open camera page fallback below works. Official open-data listing confirms only two City webcams."
+  "stream": {
+   "kind": "hls",
+   "url": "https://livecam.brucity.be/LiveBrusselsWebcams/streams/fDdnnEmqOn6Kyy3E1701416388577.m3u8"
+  },
+  "status": "Checked live 18 Nov 2026 about 20:41 Israel time: the official City stream (CC0) refuses cross-site requests in desktop browsers, so the viewer may not play it there; Safari on iPhone can still try natively. The Open camera page fallback below always works. Official open-data listing confirms only two City webcams."
  }
 ]
