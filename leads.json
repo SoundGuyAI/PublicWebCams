@@ -2,7 +2,8 @@
  {
   "city": "Ramat Hasharon",
   "name": "No verified public camera inside Ramat Hasharon",
-  "note": "Municipal cameras there are enforcement cameras, not public feeds. Nothing added."
+  "note": "Municipal cameras there are enforcement cameras, not public feeds (checked again 18 Nov 2026 in Hebrew: the city publishes only enforcement-camera locations). Nothing added.",
+  "url": "https://ramat-hasharon.muni.il/%D7%9E%D7%A6%D7%9C%D7%9E%D7%95%D7%AA-%D7%90%D7%9B%D7%99%D7%A4%D7%94-%D7%91%D7%A8%D7%97%D7%91%D7%99-%D7%94%D7%A2%D7%99%D7%A8/"
  },
  {
   "city": "Ramat Hasharon",
@@ -13,8 +14,38 @@
  {
   "city": "Ramat Hasharon (nearby)",
   "name": "Herzliya camera (about 4 km north, image feed)",
-  "note": "Outside Ramat Hasharon.",
+  "note": "Outside Ramat Hasharon. Windy image camera 1793900776, still serving frames as of 18 Nov 2026.",
   "url": "https://opencctv.org/cameras/israel/tel-aviv-district/herzliya/herzliya-420611"
+ },
+ {
+  "city": "Tel Aviv",
+  "name": "GoSurf Hilton Beach 4K (second Hilton view)",
+  "note": "Verified live 4K stream on GoSurf's own page, but it duplicates the existing Hilton camera area, so it is not on the map. Easy to add later as an operator-page view.",
+  "url": "https://gosurf.co.il/cameras/hilton"
+ },
+ {
+  "city": "Tel Aviv",
+  "name": "WaveHub surf cameras (Hilton A, Maaravi)",
+  "note": "Pages load a video player, but the stream is script-loaded and could not be isolated or verified. Not added.",
+  "url": "https://www.wavehub.co.il/beaches/hilton-a"
+ },
+ {
+  "city": "Tel Aviv",
+  "name": "tlvbeaches.com and israelbeachcams.co.il aggregators",
+  "note": "Cam aggregator pages listing the same BeachCam/operator feeds already on the map; no additional distinct cameras found.",
+  "url": "https://tlvbeaches.com/beach-cam/"
+ },
+ {
+  "city": "Brussels",
+  "name": "Official open-data webcam dataset (CC0)",
+  "note": "Checked 18 Nov 2026: the City of Brussels open-data portal lists exactly two webcams, Grand-Place and Place de Brouckere, both already on the map.",
+  "url": "https://opendata.brussels.be/explore/dataset/webcams/information/"
+ },
+ {
+  "city": "Brussels",
+  "name": "brusselsgrandplace.com webcam page",
+  "note": "Checked 18 Nov 2026: the page shows a static photo of the Grand-Place, no live video found. Not added.",
+  "url": "https://www.brusselsgrandplace.com/webcam/"
  },
  {
   "city": "Brussels",
