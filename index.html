@@ -2,12 +2,29 @@
 <title>Public Webcams: Tel Aviv, Ramat Hasharon, Brussels</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>html,body{margin:0;height:100%;background:#0b0f14;color:#dfe8f0;font:14px system-ui}
-#bar{position:absolute;z-index:1000;top:10px;left:50px;display:flex;gap:6px}
+#bar{position:absolute;z-index:1000;top:10px;left:50px;display:flex;gap:6px;flex-wrap:wrap}
 #bar button{background:#16202b;color:#dfe8f0;border:1px solid #2b3b4c;border-radius:6px;padding:6px 10px;cursor:pointer}
-#map{height:100%}.leaflet-popup-content img{width:240px;display:block;margin:6px 0}
-#ld{position:absolute;z-index:1000;bottom:24px;left:10px;max-width:420px;background:#16202bee;border:1px solid #2b3b4c;border-radius:6px;padding:6px 10px;font-size:12px}#ld ul{padding-left:16px;margin:4px 0}#ld a{color:#7fd4ff}#note{display:none;position:absolute;z-index:1000;top:56px;left:50px;right:10px;max-width:420px;background:#16202bee;color:#dfe8f0;border:1px solid #2b3b4c;border-radius:6px;padding:8px 10px}.st{color:#888;font-size:12px}</style></head><body>
+#map{height:100%}
+#ld{position:absolute;z-index:1000;bottom:24px;left:10px;max-width:420px;background:#16202bee;border:1px solid #2b3b4c;border-radius:6px;padding:6px 10px;font-size:12px}#ld ul{padding-left:16px;margin:4px 0}#ld a{color:#7fd4ff}
+#note{display:none;position:absolute;z-index:1000;top:56px;left:50px;right:10px;max-width:420px;background:#16202bee;color:#dfe8f0;border:1px solid #2b3b4c;border-radius:6px;padding:8px 10px}.st{color:#888;font-size:12px}
+#vw{position:fixed;inset:0;z-index:2000;background:rgba(4,8,12,.72);display:none;align-items:center;justify-content:center;padding:12px}
+#vw.open{display:flex}
+#vwcard{background:#16202b;border:1px solid #2b3b4c;border-radius:10px;max-width:860px;width:100%;max-height:94vh;overflow:auto;padding:10px 12px}
+#vwcard video,#vwcard img.feed{width:100%;max-height:62vh;background:#000;border-radius:6px;display:block}
+#vwtop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+#vwtitle{font-weight:600}
+#vwclose{background:#0b0f14;color:#dfe8f0;border:1px solid #2b3b4c;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:16px;line-height:1}
+#vwerr{display:none;background:#3a2030;border:1px solid #6b3a4a;border-radius:6px;padding:8px 10px;margin:8px 0}
+#vw a{color:#7fd4ff}</style></head><body>
 <div id="bar"></div><div id="note"></div><details id="ld"><summary>Leads</summary><div id="leads"></div></details><div id="map"></div>
+<div id="vw" role="dialog" aria-modal="true"><div id="vwcard">
+<div id="vwtop"><div><div id="vwtitle"></div><div class="st" id="vwsub"></div></div><button id="vwclose" aria-label="Close">&times;</button></div>
+<div id="vwbody"></div>
+<div id="vwerr"></div>
+<div style="margin-top:8px"><a id="vwlink" href="#" target="_blank" rel="noopener noreferrer">Open camera page</a><div class="st" id="vwst"></div></div>
+</div></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
 <script>
 const CITIES={"Tel Aviv":[32.07,34.77,12],"Ramat Hasharon":[32.146,34.84,13],"Brussels":[50.85,4.352,13]};
 const map=L.map('map').setView([32.07,34.77],11);
@@ -22,11 +39,49 @@ function go(c){map.setView(CITIES[c].slice(0,2),CITIES[c][2]);
 for(const c in CITIES){const b=document.createElement('button');b.textContent=c;b.onclick=()=>go(c);bar.append(b)}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const q=new URLSearchParams(location.search);
+let hlsInst=null,imgTimer=null;
+function closeViewer(){document.getElementById('vw').classList.remove('open');
+ if(hlsInst){hlsInst.destroy();hlsInst=null}
+ if(imgTimer){clearInterval(imgTimer);imgTimer=null}
+ document.getElementById('vwbody').innerHTML='';}
+document.getElementById('vwclose').onclick=closeViewer;
+document.getElementById('vw').addEventListener('click',e=>{if(e.target.id==='vw')closeViewer()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeViewer()});
+function openViewer(c){
+ document.getElementById('vw').classList.add('open');
+ document.getElementById('vwtitle').textContent=c.name;
+ document.getElementById('vwsub').textContent=c.city+' \u00b7 '+c.type;
+ document.getElementById('vwlink').href=c.page;
+ document.getElementById('vwst').textContent=c.operator+' \u2014 '+c.status;
+ const body=document.getElementById('vwbody');body.innerHTML='';
+ const err=document.getElementById('vwerr');err.style.display='none';
+ const fail=msg=>{err.style.display='block';err.textContent=msg+' Use "Open camera page" below to watch it on the operator site.'};
+ const s=c.stream;
+ if(!s){fail('This camera has no embeddable feed.');return}
+ if(s.kind==='image'){
+  const img=document.createElement('img');img.className='feed';img.alt=c.name;
+  const load=()=>{img.src=s.url+(s.url.indexOf('?')>=0?'&':'?')+'t='+Date.now()};
+  load();imgTimer=setInterval(load,(s.refresh||60)*1000);
+  img.onerror=()=>fail('The image feed did not load.');
+  body.append(img);return}
+ if(s.kind==='hls'){
+  const v=document.createElement('video');v.controls=true;v.muted=true;v.autoplay=true;v.playsInline=true;
+  body.append(v);
+  const onerr=()=>fail('The live stream did not load here (the operator may block outside players).');
+  if(window.Hls&&Hls.isSupported()){
+   hlsInst=new Hls({liveSyncDurationCount:3});
+   hlsInst.on(Hls.Events.ERROR,(e,d)=>{if(d&&d.fatal)onerr()});
+   hlsInst.loadSource(s.url);hlsInst.attachMedia(v);
+  }else if(v.canPlayType('application/vnd.apple.mpegurl')){v.src=s.url;v.addEventListener('error',onerr);}
+  else{fail('This browser cannot play the live stream.');return}
+  v.play().catch(()=>{});
+  return}
+ fail('This camera has no embeddable feed.')}
 fetch('cameras.json').then(r=>r.json()).then(cams=>{CAMS=cams;cams.forEach(c=>{
- const emb=c.embed?`<iframe src="${esc(c.page)}" width="300" height="170" allowfullscreen loading="lazy" referrerpolicy="no-referrer" style="border:0;margin:6px 0;display:block"></iframe>`:'';
- const m=L.circleMarker([c.lat,c.lon],{radius:8,color:'#0a7ea4',fillOpacity:.7}).addTo(map).bindPopup(
- `<b>${esc(c.name)}</b><br>${esc(c.city)} &middot; ${esc(c.type)}${emb}<br><a href="${esc(c.page)}" target="_blank" rel="noopener noreferrer">Open camera page</a><br><span class="st">${esc(c.operator)}<br>${esc(c.status)}</span>`,{minWidth:300});
- if(q.get('open')===c.id)m.openPopup();});
+ const m=L.circleMarker([c.lat,c.lon],{radius:8,color:'#0a7ea4',fillOpacity:.7}).addTo(map);
+ m.bindTooltip(c.name);
+ m.on('click',()=>openViewer(c));
+ if(q.get('open')===c.id)openViewer(c);});
 if(CITIES[q.get('city')])go(q.get('city'));});
 if(q.get('leads'))document.getElementById('ld').open=true;
 fetch('leads.json').then(r=>r.json()).then(ls=>{const d=document.getElementById('leads');
