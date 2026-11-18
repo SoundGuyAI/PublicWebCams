@@ -5,14 +5,14 @@
   "name": "Hilton Beach (Yamit Marina)",
   "lat": 32.0912,
   "lon": 34.771,
-  "type": "Live video (HLS)",
-  "operator": "BeachCam Israel (beachcam.co.il), via OpenCCTV listing",
-  "page": "https://opencctv.org/cameras/israel/tel-aviv/hilton-beach-yamit-marina-332854",
+  "type": "Live video (operator page in place)",
+  "operator": "BeachCam Israel (beachcam.co.il), found via OpenCCTV listing",
+  "page": "https://beachcam.co.il/yamit.html",
   "stream": {
-   "kind": "hls",
-   "url": "https://s27.ipcamlive.com/streams/1bxjmdntsbzoqzkwe/stream.m3u8"
+   "kind": "frame",
+   "url": "https://beachcam.co.il/yamit.html"
   },
-  "status": "Checked 18 Nov 2026 about 20:35 Israel time: live playlist answers with open CORS, so it plays in the page viewer. Operator page linked for fallback."
+  "status": "Checked 18 Nov 2026 about 20:50 Israel time: the viewer shows the operator's own camera page in place (their player, branding and ads intact); the page allows framing. The raw stream is not reused because the streaming provider (ipCamLive) restricts embedding to the operator's own sites."
  },
  {
   "id": "tlv-aviv",
@@ -20,14 +20,14 @@
   "name": "Aviv Beach (Dolfinarium)",
   "lat": 32.072,
   "lon": 34.763,
-  "type": "Live video (HLS)",
-  "operator": "BeachCam Israel (beachcam.co.il), via OpenCCTV listing",
-  "page": "https://opencctv.org/cameras/israel/tel-aviv/aviv-beach-dolfinarium-332855",
+  "type": "Live video (operator page in place)",
+  "operator": "BeachCam Israel (beachcam.co.il), found via OpenCCTV listing",
+  "page": "https://beachcam.co.il/dolfinarium.html",
   "stream": {
-   "kind": "hls",
-   "url": "https://s31.ipcamlive.com/streams/1fes5p6gbxlhrad7t/stream.m3u8"
+   "kind": "frame",
+   "url": "https://beachcam.co.il/dolfinarium.html"
   },
-  "status": "Checked 18 Nov 2026 about 20:35 Israel time: live playlist answers with open CORS, so it plays in the page viewer. Operator page linked for fallback."
+  "status": "Checked 18 Nov 2026 about 20:50 Israel time: the viewer shows the operator's own camera page in place (their player, branding and ads intact); the page allows framing. The raw stream is not reused because the streaming provider (ipCamLive) restricts embedding to the operator's own sites."
  },
  {
   "id": "tlv-jaffa",
@@ -35,14 +35,14 @@
   "name": "Jaffa Beach",
   "lat": 32.053,
   "lon": 34.751,
-  "type": "Live video (HLS)",
-  "operator": "BeachCam Israel (beachcam.co.il), via OpenCCTV listing",
-  "page": "https://opencctv.org/cameras/israel/tel-aviv/jaffa-beach-332856",
+  "type": "Live video (operator page in place)",
+  "operator": "BeachCam Israel (beachcam.co.il), found via OpenCCTV listing",
+  "page": "https://beachcam.co.il/yafo.html",
   "stream": {
-   "kind": "hls",
-   "url": "https://s5.ipcamlive.com/streams/05r2jd5qnplgkf4hh/stream.m3u8"
+   "kind": "frame",
+   "url": "https://beachcam.co.il/yafo.html"
   },
-  "status": "Checked 18 Nov 2026 about 20:35 Israel time: live playlist answers with open CORS, so it plays in the page viewer. Operator page linked for fallback."
+  "status": "Checked 18 Nov 2026 about 20:50 Israel time: the viewer shows the operator's own camera page in place (their player, branding and ads intact); the page allows framing. The raw stream is not reused because the streaming provider (ipCamLive) restricts embedding to the operator's own sites."
  },
  {
   "id": "tlv-banana",
@@ -50,15 +50,10 @@
   "name": "Banana Beach",
   "lat": 32.069,
   "lon": 34.7633,
-  "type": "Image feed (refreshes every 60 s)",
+  "type": "Image feed",
   "operator": "Windy webcam 1639421838 (BeachCam watermark), via OpenCCTV listing",
   "page": "https://opencctv.org/cameras/israel/tel-aviv-district/tel-aviv-yafo/banana-beach-tel-aviv-300664",
-  "stream": {
-   "kind": "image",
-   "url": "https://imgproxy.windy.com/_/full/plain/current/1639421838/original.jpg",
-   "refresh": 60
-  },
-  "status": "Checked 18 Nov 2026 about 20:35 Israel time: current frame answers as a JPEG and shows in the page viewer, refreshing every 60 s. Operator page linked for fallback."
+  "status": "Checked 18 Nov 2026 about 20:50 Israel time: no in-page feed. Windy blocks framing its webcam pages and blocks image hotlinking from other sites, so this camera only opens on the listing page below."
  },
  {
   "id": "tlv-jaffaport",
@@ -66,15 +61,10 @@
   "name": "Old Jaffa / Jaffa Port",
   "lat": 32.0554,
   "lon": 34.7549,
-  "type": "Image feed (refreshes every 60 s)",
+  "type": "Image feed",
   "operator": "Windy webcam 1793900793 (BeachCam watermark), via OpenCCTV listing",
   "page": "https://opencctv.org/cameras/israel/tel-aviv-district/tel-aviv-yafo/tel-aviv-yafo-west-old-jaffa-jaffa-port-314544",
-  "stream": {
-   "kind": "image",
-   "url": "https://imgproxy.windy.com/_/full/plain/current/1793900793/original.jpg",
-   "refresh": 60
-  },
-  "status": "Checked 18 Nov 2026 about 20:35 Israel time: current frame answers as a JPEG and shows in the page viewer, refreshing every 60 s. Operator page linked for fallback."
+  "status": "Checked 18 Nov 2026 about 20:50 Israel time: no in-page feed. Windy blocks framing its webcam pages and blocks image hotlinking from other sites, so this camera only opens on the listing page below."
  },
  {
   "id": "tlv-gordon",
@@ -82,14 +72,14 @@
   "name": "Gordon Beach 4K",
   "lat": 32.0827,
   "lon": 34.7687,
-  "type": "Live video (HLS, 4K)",
+  "type": "Live video (operator page in place)",
   "operator": "GoSurf Israel (gosurf.co.il), official public camera page",
   "page": "https://gosurf.co.il/cameras/tel-aviv-gordon",
   "stream": {
-   "kind": "hls",
-   "url": "https://live.gosurf.co.il/tlv-gordon/live.m3u8"
+   "kind": "frame",
+   "url": "https://gosurf.co.il/cameras/tel-aviv-gordon"
   },
-  "status": "Added 18 Nov 2026 about 20:40 Israel time after wider research: GoSurf runs an open 4K live stream for Gordon Beach; playlist answers with open CORS, so it plays in the page viewer. Operator page linked for fallback."
+  "status": "Added 18 Nov 2026 after wider research. The viewer shows GoSurf's own camera page in place (their player and ads intact); the page allows framing. Their terms claim content ownership, so the raw 4K stream is not reused directly."
  },
  {
   "id": "bru-grandplace",
