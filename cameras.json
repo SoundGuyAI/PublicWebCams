@@ -1,0 +1,86 @@
+[
+ {
+  "id": "tlv-hilton",
+  "city": "Tel Aviv",
+  "name": "Hilton Beach (Yamit Marina)",
+  "lat": 32.0912,
+  "lon": 34.771,
+  "type": "Camera view (stream on operator page)",
+  "operator": "BeachCam Israel (beachcam.co.il), via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv/hilton-beach-yamit-marina-332854",
+  "embed": false,
+  "status": "Checked 18 Nov 2026 about 14:03 Israel time: page showed a current timestamped frame. Link-out only (the page cannot be embedded)."
+ },
+ {
+  "id": "tlv-aviv",
+  "city": "Tel Aviv",
+  "name": "Aviv Beach (Dolfinarium)",
+  "lat": 32.072,
+  "lon": 34.763,
+  "type": "Camera view (stream on operator page)",
+  "operator": "BeachCam Israel (beachcam.co.il), via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv/aviv-beach-dolfinarium-332855",
+  "embed": false,
+  "status": "Checked 18 Nov 2026 about 14:03 Israel time: page showed a current timestamped frame. Link-out only (the page cannot be embedded)."
+ },
+ {
+  "id": "tlv-jaffa",
+  "city": "Tel Aviv",
+  "name": "Jaffa Beach",
+  "lat": 32.053,
+  "lon": 34.751,
+  "type": "Camera view (stream on operator page)",
+  "operator": "BeachCam Israel (beachcam.co.il), via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv/jaffa-beach-332856",
+  "embed": false,
+  "status": "Checked 18 Nov 2026 about 14:03 Israel time: page showed a current timestamped frame. Link-out only (the page cannot be embedded)."
+ },
+ {
+  "id": "tlv-banana",
+  "city": "Tel Aviv",
+  "name": "Banana Beach",
+  "lat": 32.069,
+  "lon": 34.7633,
+  "type": "Camera view (frame refreshes)",
+  "operator": "BeachCam Israel (watermark on frame), via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv-district/tel-aviv-yafo/banana-beach-tel-aviv-300664",
+  "embed": false,
+  "status": "Checked 18 Nov 2026 about 14:04 Israel time: page showed a timestamped BeachCam frame, a few minutes old. Link-out only."
+ },
+ {
+  "id": "tlv-jaffaport",
+  "city": "Tel Aviv",
+  "name": "Old Jaffa / Jaffa Port",
+  "lat": 32.0554,
+  "lon": 34.7549,
+  "type": "Camera view (frame refreshes)",
+  "operator": "BeachCam Israel (watermark on frame), via OpenCCTV listing",
+  "page": "https://opencctv.org/cameras/israel/tel-aviv-district/tel-aviv-yafo/tel-aviv-yafo-west-old-jaffa-jaffa-port-314544",
+  "embed": false,
+  "status": "Checked 18 Nov 2026 about 14:04 Israel time: page showed a timestamped BeachCam frame, a few minutes old. Link-out only."
+ },
+ {
+  "id": "bru-grandplace",
+  "city": "Brussels",
+  "name": "Grand-Place webcam",
+  "lat": 50.8462335,
+  "lon": 4.3530326,
+  "type": "Camera view (video player on city page)",
+  "operator": "Ville de Bruxelles (open data, CC0)",
+  "page": "https://www.brussels.be/webcam-grand-place",
+  "embed": false,
+  "status": "Checked 18 Nov 2026 about 14:09 Israel time: pressed play on the official City of Brussels page and the video advanced with moving people and traffic. Link-out only."
+ },
+ {
+  "id": "bru-brouckere",
+  "city": "Brussels",
+  "name": "Place de Brouckere webcam",
+  "lat": 50.8521115,
+  "lon": 4.3533617,
+  "type": "Camera view (video player on city page)",
+  "operator": "Ville de Bruxelles (open data, CC0)",
+  "page": "https://www.brussels.be/webcam-place-de-brouckere",
+  "embed": false,
+  "status": "Checked 18 Nov 2026 about 14:09 Israel time: pressed play on the official City of Brussels page and the video advanced with moving people and traffic. Link-out only."
+ }
+]

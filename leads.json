@@ -1,0 +1,42 @@
+[
+ {
+  "city": "Ramat Hasharon",
+  "name": "No verified public camera inside Ramat Hasharon",
+  "note": "Municipal cameras there are enforcement cameras, not public feeds. Nothing added."
+ },
+ {
+  "city": "Ramat Hasharon",
+  "name": "Gilot Interchange (Ayalon Highway)",
+  "note": "Only a third-party listing (spotcameras.com); the listed source site ayalonhw.co.il did not respond. Treated as dead.",
+  "url": "https://spotcameras.com/en/cams/Asia/Israel/2719-Ramat-HaSharon-Gilot-Interchange-Israel"
+ },
+ {
+  "city": "Ramat Hasharon (nearby)",
+  "name": "Herzliya camera (about 4 km north, image feed)",
+  "note": "Outside Ramat Hasharon.",
+  "url": "https://opencctv.org/cameras/israel/tel-aviv-district/herzliya/herzliya-420611"
+ },
+ {
+  "city": "Brussels",
+  "name": "Brussels Mobility traffic cameras",
+  "note": "CC0 dataset, but the map service answers 401 without a login or token. Not used.",
+  "url": "https://data.mobility.brussels/nl/info/a1180648-0200-4f10-a832-84cedd755eb6/"
+ },
+ {
+  "city": "Brussels",
+  "name": "Wallonia SPW Trafiroutes motorway cameras",
+  "note": "Outside Brussels (Wallonia); not added.",
+  "url": "https://trafiroutes.wallonie.be/trafiroutes/cameras/"
+ },
+ {
+  "city": "Israel",
+  "name": "Netivei Israel highway cameras",
+  "note": "Reported taken off public access (migdalor-news.co.il); not added."
+ },
+ {
+  "city": "Brussels",
+  "name": "Two image feeds on OpenCCTV (City of Brussels east of centre, Schaerbeek)",
+  "note": "Pages load, but the operator is not identified, so they are not shown as public cameras.",
+  "url": "https://opencctv.org/cameras/belgium/brussels"
+ }
+]
